@@ -6,6 +6,15 @@ import java.util.HashMap;
 import java.util.List;
 
 class Solution17 {
+
+    public static void main(String[] args) {
+        Solution17 test = new Solution17();
+        List<String> res = test.letterCombinations("23");
+        for (String re : res) {
+            System.out.println(re);
+        }
+    }
+
     public List<String> letterCombinations(String digits) {
         ArrayList<String> result = new ArrayList<>();
 
@@ -18,25 +27,24 @@ class Solution17 {
         map.put('7', "pqrs");
         map.put('8', "tuv");
         map.put('9', "wxyz");
-
-        backTrack(digits, map, 0, result, new StringBuilder());
+        backTrack(result, map, 0, digits, new StringBuilder());
         return result;
     }
 
-    public void backTrack(String digits, HashMap<Character, String> map, int index, ArrayList<String> result, StringBuilder sb) {
+    public void backTrack(ArrayList<String> result, HashMap<Character, String> map, int index, String digits, StringBuilder sb) {
         if (index == digits.length()) {
             result.add(sb.toString());
         } else {
-            char c = digits.charAt(index);
-            String str = map.get(c);
+            String str = map.get(digits.charAt(index));
             for (int i = 0; i < str.length(); i++) {
                 sb.append(str.charAt(i));
-                backTrack(digits, map, index + 1, result, sb);
+                backTrack(result, map, index + 1, digits, sb);
                 sb.deleteCharAt(index);
             }
         }
-
     }
+
+
 
     public int test(String str) {
         int count = 0;
