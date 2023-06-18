@@ -3,13 +3,8 @@ package leetcode.editor.cn;
 
 import java.util.HashMap;
 
-class Solution {
+class Solution1021 {
 
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        String s = solution.removeOuterParentheses("(()())(())");
-        System.out.println(s);
-    }
 
     public String removeOuterParentheses(String s) {
         StringBuilder result = new StringBuilder();
